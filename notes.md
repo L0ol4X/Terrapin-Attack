@@ -4,6 +4,7 @@
 
 ### lancement des conteneurs :
 `docker-compose up -d`
+
 `docker-compose ps`
 
 ### récupération des ip du serveur et de l'attaquant (pour lancer le script)
