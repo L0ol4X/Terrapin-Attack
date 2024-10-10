@@ -20,6 +20,7 @@ services:
         - "VERSION=9.5p1"
       target: openssh-server
     entrypoint: ["/install/sbin/sshd", "-D", "-d", "-e", "-o", "MaxStartups=65536", "-o", "Ciphers=chacha20-poly1305@openssh.com"]
+    restart: always
     networks:
       - host
 
