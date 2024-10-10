@@ -9,6 +9,7 @@
 
 ### récupération des ip du serveur et de l'attaquant (pour lancer le script)
 `docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' terrapin-attack_serveur_1`
+
 `docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' terrapin-attack_attaquant_1`
 
 ## Lancement de 3 terminal diff
