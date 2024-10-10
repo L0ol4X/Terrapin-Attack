@@ -19,7 +19,7 @@ services:
       args:
         - "VERSION=9.5p1"
       target: openssh-server
-    entrypoint: ["/install/sbin/sshd", "-D", "-e", "-o", "MaxStartups=65536", "-o", "Ciphers=chacha20-poly1305@openssh.com"]
+    entrypoint: ["/install/sbin/sshd", "-D", "-d", "-e", "-o", "MaxStartups=65536", "-o", "Ciphers=chacha20-poly1305@openssh.com"]
     networks:
       - host
 
