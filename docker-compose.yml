@@ -1,0 +1,39 @@
+services:
+  victime:
+    image: terrapin/openssh-client:9.4p1
+    build:
+      context: impl/openssh
+      args:
+        - "VERSION=9.5p1"
+      target: openssh-client
+    networks:
+      - host
+    entrypoint: ["/bin/bash"]
+    stdin_open: true
+    tty: true
+
+  serveur:
+    image: terrapin/openssh-server:9.4p1
+    build:
+      context: impl/openssh
+      args:
+        - "VERSION=9.5p1"
+      target: openssh-server
+    entrypoint: ["/install/sbin/sshd", "-D", "-e", "-o", "MaxStartups=65536", "-o", "Ciphers=chacha20-poly1305@openssh.com"]
+    networks:
+      - host
+
+  attaquant:
+    image: terrapin/attaquant
+    build:
+      context: pocs/
+      target: poc-base
+    entrypoint: ["/bin/sh"]
+    stdin_open: true
+    tty: true
+    networks:
+      - host
+
+networks:
+  host:
+
